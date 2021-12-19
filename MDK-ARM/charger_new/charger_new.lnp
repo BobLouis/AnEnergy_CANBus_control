@@ -1,0 +1,28 @@
+--cpu=Cortex-M4.fp.sp
+"charger_new\startup_stm32f407xx.o"
+"charger_new\main.o"
+"charger_new\gpio.o"
+"charger_new\can.o"
+"charger_new\stm32f4xx_it.o"
+"charger_new\stm32f4xx_hal_msp.o"
+"charger_new\stm32f4xx_hal_can.o"
+"charger_new\stm32f4xx_hal_rcc.o"
+"charger_new\stm32f4xx_hal_rcc_ex.o"
+"charger_new\stm32f4xx_hal_flash.o"
+"charger_new\stm32f4xx_hal_flash_ex.o"
+"charger_new\stm32f4xx_hal_flash_ramfunc.o"
+"charger_new\stm32f4xx_hal_gpio.o"
+"charger_new\stm32f4xx_hal_dma_ex.o"
+"charger_new\stm32f4xx_hal_dma.o"
+"charger_new\stm32f4xx_hal_pwr.o"
+"charger_new\stm32f4xx_hal_pwr_ex.o"
+"charger_new\stm32f4xx_hal_cortex.o"
+"charger_new\stm32f4xx_hal.o"
+"charger_new\stm32f4xx_hal_exti.o"
+"charger_new\stm32f4xx_hal_tim.o"
+"charger_new\stm32f4xx_hal_tim_ex.o"
+"charger_new\system_stm32f4xx.o"
+--strict --scatter "charger_new\charger_new.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "charger_new.map" -o charger_new\charger_new.axf
