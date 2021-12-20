@@ -123,7 +123,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		HAL_CAN_AddTxMessage(&hcan1,&TxMessage,TxData,&TxMailbox);
 		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1); 
-		HAL_Delay(950);
+		HAL_Delay(100);
 		
   }
   /* USER CODE END 3 */
@@ -205,10 +205,10 @@ void CAN_Txsetup(){
 			
 		}
 		
-		TxMessage.StdId=0x0C0;
-		TxMessage.ExtId=0x01;
+		TxMessage.StdId=0x01;
+		TxMessage.ExtId=chargerID;
 		TxMessage.RTR=CAN_RTR_DATA;
-		TxMessage.IDE=CAN_ID_STD;
+		TxMessage.IDE=CAN_ID_EXT;
 		TxMessage.DLC=8;
 		TxMessage.TransmitGlobalTime=DISABLE;   //time trigger must be turned ON6
 		   
@@ -223,7 +223,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
 	if(HAL_CAN_GetRxMessage(hcan,CAN_RX_FIFO0,&RxMessage,RxData)!=HAL_OK){
 		Error_Handler();
 	}
-	receivedID=RxMessage.StdId;
+	receivedID=RxMessage.ExtId;
 	if(receivedID == chargerSentID){
 		voltageOutput = (RxData[0]<<8 | RxData[1]);
 		currentOutput = (RxData[2]<<8 | RxData[3]);
